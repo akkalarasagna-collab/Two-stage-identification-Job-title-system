@@ -321,10 +321,11 @@ app.teardown_appcontext(close_db)
 @app.route("/debug")
 def debug():
     return {
-        "vectorizer_type": str(type(vectorizer)),
+        "model_exists": os.path.exists(MODEL_PATH),
+        "vectorizer_exists": os.path.exists(VECTORIZER_PATH),
+        "vectorizer_path": VECTORIZER_PATH,
         "has_idf": hasattr(vectorizer, "idf_"),
         "vocab_size": len(vectorizer.vocabulary_) if hasattr(vectorizer, "vocabulary_") else 0,
-        "classifier_type": str(type(classifier))
     }
 
 
