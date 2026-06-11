@@ -56,12 +56,23 @@ def ensure_nltk_data():
 
 def load_ml_artifacts():
     global classifier, vectorizer
+
+    print("MODEL PATH:", MODEL_PATH)
+    print("VECTORIZER PATH:", VECTORIZER_PATH)
+    print("MODEL EXISTS:", os.path.exists(MODEL_PATH))
+    print("VECTORIZER EXISTS:", os.path.exists(VECTORIZER_PATH))
+
     if not os.path.exists(MODEL_PATH) or not os.path.exists(VECTORIZER_PATH):
         classifier = None
         vectorizer = None
         return
+
     classifier = joblib.load(MODEL_PATH)
     vectorizer = joblib.load(VECTORIZER_PATH)
+
+    print("CLASSIFIER TYPE:", type(classifier))
+    print("VECTORIZER TYPE:", type(vectorizer))
+    print("HAS IDF:", hasattr(vectorizer, "idf_"))
 
 
 def preprocess_text(text):
