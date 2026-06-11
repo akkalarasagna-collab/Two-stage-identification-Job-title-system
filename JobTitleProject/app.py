@@ -249,7 +249,7 @@ def predict():
     description_vector = vectorizer.transform([cleaned])
     predicted_title = classifier.predict(description_vector)[0]
     confidence = confidence_from_svc(description_vector, predicted_title)
-    create_prediction(session["user_id"], description, predicted_title)
+    #create_prediction(session["user_id"], description, predicted_title)
 
     return jsonify({
         "success": True,
