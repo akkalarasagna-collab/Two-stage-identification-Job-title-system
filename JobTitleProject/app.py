@@ -323,6 +323,7 @@ def debug():
     return {
         "model_exists": os.path.exists(MODEL_PATH),
         "vectorizer_exists": os.path.exists(VECTORIZER_PATH),
+        "model_path": MODEL_PATH,
         "vectorizer_path": VECTORIZER_PATH,
         "has_idf": hasattr(vectorizer, "idf_"),
         "vocab_size": len(vectorizer.vocabulary_) if hasattr(vectorizer, "vocabulary_") else 0,
