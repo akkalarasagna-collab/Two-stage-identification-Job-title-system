@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Prediction Dashboard{% endblock %}
+{% block content %}
+<section class="page-grid">
+    <div class="panel predictor-panel">
+        <p class="eyebrow">Prediction Module</p>
+        <h1>Identify Job Title</h1>
+        <form id="predictionForm">
+            <label for="jobDescription">Job Description</label>
+            <textarea id="jobDescription" name="job_description" rows="12" placeholder="Paste the online job advertisement description here..." required></textarea>
+            <button class="primary-button" type="submit">Predict Job Title</button>
+        </form>
+    </div>
+    <aside class="result-panel">
+        <div class="result-card">
+            <p class="eyebrow">Prediction Result</p>
+            <h2 id="predictedTitle">Waiting for input</h2>
+            <p id="confidenceText" class="confidence">Confidence score will appear here when available.</p>
+            <div id="predictionMessage" class="message"></div>
+        </div> 
+    </aside>
+</section>
+{% endblock %}

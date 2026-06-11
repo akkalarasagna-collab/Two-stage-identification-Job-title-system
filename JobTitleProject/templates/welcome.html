@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Welcome | Job Title Identification{% endblock %}
+{% block content %}
+<section class="hero">
+    <div class="hero-content">
+        <p class="eyebrow">BTech Mini Project</p>
+        <h1>Two-Stage Job Title Identification System</h1>
+        <p class="hero-copy">Predict the most suitable job title from an online job advertisement using NLP preprocessing, TF-IDF vectorization and a trained LinearSVC classifier.</p>
+        <div class="hero-actions">
+            <a class="primary-button" href="{{ url_for('signup') }}">Create Account</a>
+            <a class="secondary-button" href="{{ url_for('login') }}">Login</a>
+        </div>
+    </div>
+</section>
+<section class="feature-band">
+    <article>
+        <h2>Authentication</h2>
+        <p>Secure signup, login, logout and password hashing.</p>
+    </article>
+    <article>
+        <h2>Prediction</h2>
+        <p>Reusable ML pipeline loading your trained model artifacts.</p>
+    </article>
+    <article>
+        <h2>Analytics</h2>
+        <p>Prediction history, search and admin dashboard charts.</p>
+    </article>
+</section>
+{% endblock %}

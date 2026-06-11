@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %}Admin Dashboard{% endblock %}
+{% block content %}
+<section class="content-shell">
+    <div class="section-header">
+        <div>
+            <p class="eyebrow">Admin Module</p>
+            <h1>Dashboard</h1>
+        </div>
+    </div>
+    <div class="stats-grid">
+        <div class="stat-card">
+            <span>Total Users</span>
+            <strong>{{ stats.total_users }}</strong>
+        </div>
+        <div class="stat-card">
+            <span>Total Predictions</span>
+            <strong>{{ stats.total_predictions }}</strong>
+        </div>
+    </div>
+    <div class="charts-grid">
+        <div class="panel">
+            <h2>Prediction Distribution</h2>
+            <canvas id="predictionChart" data-chart='{{ stats.most_predicted|tojson }}'></canvas>
+        </div>
+        <div class="panel">
+            <h2>User Activity</h2>
+            <canvas id="activityChart" data-chart='{{ stats.user_activity|tojson }}'></canvas>
+        </div>
+    </div>
+    <div class="panel">
+        <h2>Recent Activities</h2>
+        <div class="activity-list">
+            {% for item in stats.recent_activities %}
+                <div class="activity-row">
+                    <span>{{ item.username }}</span>
+                    <strong>{{ item.predicted_job_title }}</strong>
+                    <time>{{ item.timestamp|datetime }}</time>
+                </div>
+            {% else %}
+                <div class="empty-state">No recent activities.</div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}
