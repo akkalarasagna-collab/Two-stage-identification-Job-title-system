@@ -324,10 +324,10 @@ def debug():
 
     return {
         "sklearn_version": sklearn.__version__,
+        "vectorizer_type": str(type(vectorizer)),
         "has_idf": hasattr(vectorizer, "idf_"),
+        "idf_attr": "idf_" in dir(vectorizer),
         "vocab_size": len(vectorizer.vocabulary_) if hasattr(vectorizer, "vocabulary_") else 0,
-        "model_exists": os.path.exists(MODEL_PATH),
-        "vectorizer_exists": os.path.exists(VECTORIZER_PATH)
     }
 
 
