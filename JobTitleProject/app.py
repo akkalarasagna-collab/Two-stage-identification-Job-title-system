@@ -320,13 +320,14 @@ app.teardown_appcontext(close_db)
 
 @app.route("/debug")
 def debug():
+    import sklearn
+
     return {
-        "model_exists": os.path.exists(MODEL_PATH),
-        "vectorizer_exists": os.path.exists(VECTORIZER_PATH),
-        "model_path": MODEL_PATH,
-        "vectorizer_path": VECTORIZER_PATH,
+        "sklearn_version": sklearn.__version__,
         "has_idf": hasattr(vectorizer, "idf_"),
         "vocab_size": len(vectorizer.vocabulary_) if hasattr(vectorizer, "vocabulary_") else 0,
+        "model_exists": os.path.exists(MODEL_PATH),
+        "vectorizer_exists": os.path.exists(VECTORIZER_PATH)
     }
 
 
