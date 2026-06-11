@@ -318,6 +318,15 @@ with app.app_context():
 
 app.teardown_appcontext(close_db)
 
+@app.route("/debug")
+def debug():
+    return {
+        "vectorizer_type": str(type(vectorizer)),
+        "has_idf": hasattr(vectorizer, "idf_"),
+        "vocab_size": len(vectorizer.vocabulary_) if hasattr(vectorizer, "vocabulary_") else 0,
+        "classifier_type": str(type(classifier))
+    }
+
 
 if __name__ == "__main__":
     app.run(debug=True)
