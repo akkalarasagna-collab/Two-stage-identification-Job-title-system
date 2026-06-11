@@ -73,6 +73,10 @@ def load_ml_artifacts():
     print("CLASSIFIER TYPE:", type(classifier))
     print("VECTORIZER TYPE:", type(vectorizer))
     print("HAS IDF:", hasattr(vectorizer, "idf_"))
+    try:
+        print("VOCAB SIZE:", len(vectorizer.vocabulary_))
+    except Exception as e:
+        print("VOCAB ERROR:", e)
 
 
 def preprocess_text(text):
